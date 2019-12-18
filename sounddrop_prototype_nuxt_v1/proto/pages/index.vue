@@ -2,16 +2,8 @@
   <section class="container">
     <div>
       <logo />
-      <ul>
-      <li><nuxt-link to="/">Home</nuxt-link></li>
-      <li><nuxt-link to="/about">About</nuxt-link></li>
-      </ul>
-      <h1 class="title">
-        Sounddrop
-      </h1>
-      <h2 class="subtitle">
-        prototype
-      </h2>
+      <h1 class="title">Sounddrop</h1>
+      <h2 class="subtitle">prototype</h2>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -33,8 +25,6 @@ import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
-    Header,
-    Footer,
     Logo
   },
   loading: true

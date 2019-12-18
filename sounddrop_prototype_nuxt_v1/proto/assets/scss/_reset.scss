@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+
+/** Reset Style
+----------------------------------------------------
+----------------------------------------------------
+*/
+
+html,body,div,
+ul,ol,li,dl,dt,dd,
+form,fieldset,input,textarea,
+h1,h2,h3,h4,h5,h6,pre,code,p,blockquote,hr,
+th,td {
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-color: #000;
+    font-family: "Noto Sans Japanese", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+    table {
+        border-collapse:collapse;
+        border:none;
+        border-spacing:0;
+    }
+
+    fieldset,img,abbr,acronym {
+        border:0;
+    }
+
+    address,caption,cite,code,dfn,em,b,u,s,i,th,var {
+        font-style:normal;
+        font-weight:normal;
+    }
+
+    ul, ol {
+        list-style:none;
+    }
+
+    caption,th {
+        text-align:left;
+    }
+
+    q:before,q:after {
+        content:'';
+    }
+
+    hr {}
+
+    a img, :link img, :visited img { border:none; }
+
+    address {
+        font-style:normal;
+        display:inline;
+    }
+    img {
+        width: auto\9;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+        border: 0;
+        -ms-interpolation-mode: bicubic;
+    }
+    
+
+a {
+    color: #333;
+    text-decoration: none;
+    @include PropertySetPrefix(transition, all 0.1s linear);
+    &:hover {
+        opacity: 1;
+        text-decoration: underline;
+        @include PropertySetPrefix(transition, all 0.1s linear);
+    }
+}

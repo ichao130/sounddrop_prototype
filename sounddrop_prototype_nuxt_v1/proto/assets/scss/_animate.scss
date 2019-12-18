@@ -1,0 +1,65 @@
+
+//scroll Animate
+@keyframes gotoScrollAnimation {
+  0% {
+	top: 3px;
+  }
+  1% {
+	top: 3px;
+  }
+  100% {
+	top: 7px;
+  }
+}
+
+@keyframes fade-in {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+
+    1% {
+      display: block;
+      opacity: 0;
+    }
+
+    100% {
+      display: block;
+      opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+      display: block;
+      opacity: 1;
+    }
+
+    90% {
+      display: block;
+      opacity: 0;
+    }
+
+    100% {
+      display: none;
+      opacity: 0;
+    }
+}
+
+@keyframes scrollerIn {
+  0% {
+      top: 5px;
+  }
+  100% {
+      top: 10px;
+  }
+}
+
+@keyframes scrollerOut {
+  0% {
+      top: 10px;
+  }
+  100% {
+      top: 5px;
+  }
+}

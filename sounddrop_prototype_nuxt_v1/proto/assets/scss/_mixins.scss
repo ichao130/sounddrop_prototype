@@ -1,0 +1,354 @@
+@mixin blackopaity {
+	background-color: #000\9;
+	background-color: rgba(0,0,0,0.7);
+	*background-color: #000;
+}
+@mixin breakpoint($point) {
+  @if $point == dev_small {
+    @media #{$sp_resp} {
+    	@content;
+	}
+  }
+  @else if $point == dev_middle {
+    @media #{$tab_resp} {
+		@content;
+	}
+  }
+  @else if $point == dev_large {
+    @media #{$pc_resp} {
+    	@content;
+	}
+  }
+}
+
+@mixin grid_calculate($column_count) {
+	$column_count2 :$column_count;
+	/*
+	$column_count - 1;*/
+	$column_count_width : ($pc_mod * $column_count) + ($def_space * $column_count2);
+	width: ($column_count_width / $pc_content_w) * 100%;
+}
+
+@mixin grid_calculate2($grid_count,$grid_space_count) {
+	$column_width : ($pc_content_w - ($def_space * $grid_space_count)) /$grid_count;
+	$column_mod_width: ($column_width / $pc_content_w) * 100%;
+	width: $column_mod_width;
+	margin-right: ($def_space /$pc_content_w) * 100%;
+}
+
+.page-wrap {
+  width: 75%;
+  @include breakpoint(papa-bear) { width: 60%; }
+  @include breakpoint(mama-bear) { width: 80%; }
+  @include breakpoint(baby-bear) { width: 95%; }
+}
+
+//ベンダープリフィックス
+$set_prefix: -webkit-, -moz-, -ms-, -o-, '';
+//$set_prefix: -webkit-, -moz-, '';
+
+@mixin PropertySetPrefix($name, $value) {
+ 
+    @each $prefix in $set-prefix {
+ 
+        #{$prefix}#{$name}: $value;
+
+    }
+ 
+}
+
+@mixin liquid_flex {
+	@each $prefix in $set_prefix {
+          #{$prefix}box-flex: 1;
+     }
+}
+
+
+
+@mixin bdrbx {
+	@each $prefix in $set_prefix {
+          #{$prefix}box-sizing: border-box;
+     }
+}
+
+@mixin wbktbx_wno {
+	@each $prefix in $set_prefix {
+          display: #{$prefix}box;
+     }
+}
+
+@mixin wbktbx {
+	width:100%;
+	@each $prefix in $set_prefix {
+          display: #{$prefix}box;
+     }
+}
+
+@mixin box-direction($orient,$direction)  {
+	@each $prefix in $set_prefix {
+         display: #{$prefix}box;
+          #{$prefix}box-orient: #{$orient};
+          #{$prefix}box-direction: #{$direction};
+     }
+}
+
+@mixin box-number($number)  {
+	@each $prefix in $set_prefix {
+          #{$prefix}box-ordinal-group: #{$number};
+     }
+}
+
+
+@mixin wbkt_C {
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	-moz-box-align: center;
+	-moz-box-pack: center;
+}
+
+@mixin wbkt_L {
+	-webkit-box-align: center;
+	-webkit-box-pack: start;
+	-moz-box-align: center;
+	-moz-box-pack: start;
+}
+
+@mixin wbkt_R {
+	-webkit-box-align: center;
+	-webkit-box-pack: end;
+	-moz-box-align: center;
+	-moz-box-pack: end;
+}
+
+@mixin bgbtn{
+	text-indent: -9999px;
+	a {
+		display: block;
+	}
+	&:hover {
+		cursor: pointer;
+		@extend .linkhover;
+	}
+}
+
+// 背景画像作成 mixin
+
+@mixin bgadj($width,$height) {
+   @each $prefix in $set_prefix {
+          #{$prefix}background-size: $width / 2 $height / 2;
+	}
+}
+@mixin bgimg($locate, $file, $type, $rep, $width, $height, $posX, $posY) {
+	$url: null;
+	background: url($locate + $file + '.' + $type) $rep $posX $posY;
+	@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2) {
+		& {
+			background-image: url($locate + $file + '_2x.' + $type);
+			@include bgadj($width,$height);
+		}
+	}
+	$file : null;
+}
+
+
+@mixin bgimg2($locate, $file, $type, $rep, $posX, $posY)  {
+	background: url($locate + $file + '.' + $type) $rep $posX $posY;
+}
+
+
+//角R
+
+@mixin border_radius($br_value) {
+     @each $prefix in $set_prefix {
+          #{$prefix}border-radius: $br_value;
+     }
+}
+
+@mixin border_radiusSH($br_tl_value, $br_tr_value, $br_bl_value, $br_br_value) {
+    @each $prefix in $set_prefix {
+        #{$prefix}border-radius: $br_tl_value $br_tr_value $br_bl_value $br_br_value;
+    }
+}
+
+
+//アンカー出し分け
+@mixin link_underline($type) {
+	 @if $type == line-to-none { //1.あり→なし
+			&:link,&:visited {text-decoration: underline; }
+			&:hover,&:active,&:focus {
+				text-decoration: none; }
+		}@else if $type ==line{ //2.あり→あり
+			&:link, &:link,&:visited ,&:hover,&:active,&:focus{
+				text-decoration: underline; }
+		}@else if $type ==none-to-line{ //3.なし→あり
+			&:link,&:visited {text-decoration: none; }
+			&:hover,&:active,&:focus {
+				text-decoration: underline; }
+		}@else if $type ==none{ //4.なし→なし
+			&:link, &:link,&:visited ,&:hover,&:active,&:focus{
+				text-decoration: none; }
+		}
+}
+
+//リンク色出し分け
+@mixin link_color($link,$visited,$active) {
+	 	&:link {color: $link; }
+	 	&:visited {color: $visited; }
+	 	&:hover,&:active,&:focus { color: $active; }
+}
+
+@mixin link_color2($l_class,$link,$visited,$active) {
+	 @each $i in $l_class {
+	 	.#{$i} &:link {color: $link; }
+	 	.#{$i} &:visited {color: $visited; }
+	 	.#{$i} &:hover,.#{$i} &:active,.#{$i} &:focus { color: $active; }
+	 }
+}
+
+@mixin link_color3($l_class2,$link,$visited,$active) {
+	@each $i in $l_class2 {
+	 &:link .#{$i}  {color: $link; }
+	 &:visited .#{$i} {color: $visited; }
+	 &:hover .#{$i} ,&:active .#{$i} ,&:focus .#{$i}  { color: $active; }
+	}
+}
+
+//グラデ
+@mixin gradient($from,$to) {
+	background: $from; //Old browsers
+	background: -moz-linear-gradient(top,  $from 0%, (darken($from, 15%)) 100%); //FF3.6+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$from), color-stop(100%,(darken($from, 15%)))); //Chrome,Safari4+
+	background: -webkit-linear-gradient(top,  $from 0%,(darken($from, 15%)) 100%); //Chrome10+,Safari5.1+
+	background: -o-linear-gradient(top,  $from 0%,(darken($from, 15%)) 100%); // Opera 11.10+
+	background: -ms-linear-gradient(top,  $from 0%,(darken($from, 15%)) 100%); //  IE10+
+	background: linear-gradient(to bottom,  $from 0%,(darken($from, 15%)) 100%); //   W3C
+}
+@mixin gradient2($from,$to) {
+	//background: $from; //Old browsers
+	background: -moz-linear-gradient(top,  $from 0%, $to 100%); //FF3.6+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$from), color-stop(100%,$to)); //Chrome,Safari4+
+	background: -webkit-linear-gradient(top,  $from 0%,$to 100%); //Chrome10+,Safari5.1+
+	background: -o-linear-gradient(top,  $from 0%,$to 100%); // Opera 11.10+
+	background: -ms-linear-gradient(top,  $from 0%,$to 100%); //  IE10+
+	background: linear-gradient(to bottom,  $from 0%, $to 100%); //   W3C
+}
+
+@mixin col_devide_int($i) {
+	@if $i == Red {
+		$arg:#{$Red};
+	}
+	@else if $i == Green {
+		$arg : #{$Green};
+	}
+	@else if $i == Blue {
+		$arg : #{$Blue};
+	}
+	@else if $i == Orange {
+		$arg : #{$Orange};
+	}
+	@else if $i == Black {
+		$arg : #{$Black};
+	}
+}
+
+@mixin multiply($i,$m_name) {
+	@for $i from 1 through $i {
+		.#{$m_name}#{$i}
+		{
+		@content;
+		}
+	}
+}
+
+$set_social: blog, facebook, twitter;
+
+@mixin social_link {
+	@each $prefix in $set_social {
+          .#{$prefix}
+          {
+          	background: url($img-path  + 'icon_' + $prefix + '.' + png) no-repeat left 10px;
+          	@include bgadj(40px,40px);
+          }
+     }
+}
+
+@mixin col_devide {
+	@each $i in $g_list{
+		@include col_devide_int($i);
+		@content;
+	}
+}
+
+.bgindent {
+	text-indent: -9999px;
+}
+
+.mgauto {
+	margin: 0 auto;
+	text-align:center;
+}
+
+.dblock {
+	float: left;
+	overflow: hidden;
+	display: block;
+}
+
+.linkhover a:hover img{
+filter: alpha(opacity=70);
+-ms-filter: "alpha(opacity=70)";
+-moz-opacity:0.7;
+opacity:0.7;
+zoom:1;
+}
+
+.linkhover2 a:hover img{
+filter: alpha(opacity=90);
+-ms-filter: "alpha(opacity=90)";
+-moz-opacity:0.9;
+opacity:0.9;
+zoom:1;
+}
+
+@mixin linkhoverbg {
+filter: alpha(opacity=80);
+-ms-filter: "alpha(opacity=80)";
+-moz-opacity:0.7;
+opacity:0.7;
+zoom:1;
+}
+
+%linkhoverbg2 {
+filter: alpha(opacity=90);
+-ms-filter: "alpha(opacity=90)";
+-moz-opacity:0.90;
+opacity:0.90;
+zoom:1;
+}
+
+%iconlink {
+background:url(#{$img-path}icon_link.png) no-repeat left 5px;
+@include bgadj(14px,18px);
+padding: 20px;
+}
+
+
+@mixin clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+%boxshadow {
+	-webkit-box-shadow: 3px 5px 7px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 3px 5px 7px 0px rgba(0,0,0,0.3);
+	box-shadow: 3px 5px 7px 0px rgba(0,0,0,0.3);
+}
