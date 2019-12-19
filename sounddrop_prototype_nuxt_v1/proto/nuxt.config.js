@@ -58,5 +58,19 @@ export default {
     */
     extend(config, ctx) {
     }
+  },
+
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in',
+    beforeEnter(el) {
+      console.log('Before enter...');
+    }
   }
+
+  transition(to, from) {
+    if (!from) { return 'slide-left' }
+    return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
+  }
+
 }
