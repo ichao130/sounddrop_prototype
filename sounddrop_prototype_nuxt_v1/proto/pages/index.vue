@@ -1,23 +1,14 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">Sounddrop</h1>
-      <h2 class="subtitle">prototype</h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
-    </div>
-  </section>
+  <div class="layout-wrap">
+    <canvas id="Keyvisual" class="keyviual-base"></canvas>
+    <audio></audio>
+    <button class="btn btn-volume">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <button class="btn btn-play">PLAY</button>
+  </div><!--/.layout-wrap-->
 </template>
 
 <script>
@@ -27,7 +18,11 @@ export default {
   components: {
     Logo
   },
-  loading: true
+  loading: true,
+  created : function() {
+    alert('break');
+
+  }
 }
 
 
