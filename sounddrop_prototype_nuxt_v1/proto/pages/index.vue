@@ -20,7 +20,7 @@ export default {
   },
   loading: true,
   created : function() {
-    alert('break');
+    
 
   }
 }
