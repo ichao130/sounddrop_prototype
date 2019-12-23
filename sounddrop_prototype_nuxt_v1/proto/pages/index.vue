@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-wrap">
+  <div class="layout-wrap h100p">
     <canvas id="Keyvisual" class="keyviual-base"></canvas>
     <audio></audio>
     <button class="btn btn-volume">
@@ -7,7 +7,20 @@
       <span></span>
       <span></span>
     </button>
-    <button class="btn btn-play">PLAY</button>
+    <div class="layout-box box-center">
+    <button class="btn btn-play">PAUSE</button>
+    </div><!--/.play-area-->
+    <div class="tuner-wrap">
+    <h2 class="hdl-title">Environmental Sound Tuner</h2>
+    <div class="tuner-environmental_sound">
+    <ul class="tuner-list">
+      <li class="tuner-channel"><a href="#Park">Sound of Park</a></li>
+      <li class="tuner-channel is-active"><a href="#Rain">Sound of Rain</a></li>
+      <li class="tuner-channel"><a href="#Weather">Sound 0f Weather</a></li>
+    </ul>
+    </div><!--/.tuner-environmental_sound-->
+    </div><!--/.tuner-wrap-->
+
   </div><!--/.layout-wrap-->
 </template>
 

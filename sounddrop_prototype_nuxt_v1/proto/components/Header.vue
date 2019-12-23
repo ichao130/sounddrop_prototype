@@ -1,8 +1,16 @@
 <template>
-<div id="Header" class="layout-wrap">
+<div id="Header" class="layout-wrap layout-wrap_layer">
+  <div class="nav-pos">
+    <a href="#" class="btn btn-nav">
+      <span class="icon"></span>
+      <span class="icon"></span>
+      <span class="icon"></span>
+    </a>
+  </div><!--/.btn-nav-->
+
   <div class="layout-inner">
     <h1 class="logo">Sounddrop</h1>
-    <p class="tagline">tagline</p>
+    <p class="tagline">To enjoy rainy days...</p>
   </div><!--/.layout-inner-->
   <div class="btn btn-menu">
     <span></span>
