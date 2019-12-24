@@ -9,8 +9,8 @@
   </div><!--/.btn-nav-->
 
   <div class="layout-inner">
-    <h1 class="logo">Sounddrop</h1>
-    <p class="tagline">To enjoy rainy days...</p>
+    <!--h1 class="logo font-inputmono_light">Sounddrop</h1-->
+    <!--p class="tagline font-inputmono_light">To enjoy rainy days...</p-->
   </div><!--/.layout-inner-->
   <div class="btn btn-menu">
     <span></span>
@@ -19,6 +19,7 @@
   </div><!--/.btn-menu-->
 </div><!--/#Header-->
 </template>
+
 
 <style>
 

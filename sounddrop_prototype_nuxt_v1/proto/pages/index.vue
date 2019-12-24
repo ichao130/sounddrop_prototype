@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-wrap h100p">
+  <div class="layout-wrap h100p font-inputmono_light">
     <canvas id="Keyvisual" class="keyviual-base"></canvas>
     <audio></audio>
     <button class="btn btn-volume">
@@ -8,9 +8,9 @@
       <span></span>
     </button>
     <div class="layout-box box-center">
-    <button class="btn btn-play">PAUSE</button>
+    <button class="btn btn-play font-inputmono_light">PLAY</button>
     </div><!--/.play-area-->
-    <div class="tuner-wrap">
+    <div class="tuner-wrap font-inputmono_light">
     <h2 class="hdl-title">Environmental Sound Tuner</h2>
     <div class="tuner-environmental_sound">
     <ul class="tuner-list">
